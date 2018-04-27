@@ -41,7 +41,27 @@ public class ClientController {
 			} catch (RemoteException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+			} break;
+			
+			case 2:
+				
+			try {
+				clientView.show(clientModel.displayMembers());
+			} catch (RemoteException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
+				
+				break;
+				
+			case 3 :
+			try {
+				clientView.show(clientModel.displayNotPaidMembers());
+			} catch (RemoteException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+				break;
 				
 				
 				

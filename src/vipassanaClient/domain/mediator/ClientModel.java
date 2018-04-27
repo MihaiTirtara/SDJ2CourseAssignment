@@ -8,5 +8,6 @@ import utility.observer.RemoteObserver;
 public interface ClientModel extends Remote, RemoteObserver<String> {
 	
 	public void addMember(String name, String lastName, boolean payment) throws RemoteException;
-
+	public String displayMembers() throws RemoteException;
+	public String displayNotPaidMembers() throws RemoteException;
 }

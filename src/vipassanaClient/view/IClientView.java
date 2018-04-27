@@ -1,5 +1,7 @@
 package vipassanaClient.view;
 
-public interface IClientView {
+import java.util.Observer;
+
+public interface IClientView extends Runnable, Observer  {
 
 }

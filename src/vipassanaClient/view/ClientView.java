@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 import vipassanaClient.controller.ClientController;
 
-public class ClientView implements IClientView, Runnable, Observer {
+public class ClientView implements IClientView {
 
 	private ClientController clientController;
 	private Scanner input;
@@ -23,18 +23,13 @@ public class ClientView implements IClientView, Runnable, Observer {
 		t.start();
 	}
 
-	@Override
-	public void update(Observable arg0, Object arg1) {
-		
-		
-	}
+	
 
-	@Override
 	public void run() {
 		boolean continueWorking = true;
 		while (continueWorking) {
 			// Read input from user input.
-			System.out.print("1) Type 1 to add new member" +" Type 0 to \"EXIT\"\n Enter choice: ");
+			System.out.print("1) Type 1 to add new member \n 2) Type 2 to get all members \n" +" Type 0 to exit\n Enter choice: ");
 			int choice = input.nextInt();
 			input.nextLine();
 
@@ -56,6 +51,15 @@ public class ClientView implements IClientView, Runnable, Observer {
 	
 	public void show(String text) {
 		System.out.println(text);
+	}
+
+
+	
+	public void update(Observable o, Object arg) {
+		System.out.println("BLAH");
+		String message = (String) arg;
+		show(message);
+		
 	}
 
 	

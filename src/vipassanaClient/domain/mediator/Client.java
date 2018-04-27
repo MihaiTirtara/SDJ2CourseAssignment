@@ -10,10 +10,12 @@ public class Client {
 		
 		ClientModelManager clientModel = new ClientModelManager();
 		ClientView clientView = new ClientView();
+		clientModel.addObserver(clientView);
+		System.out.println(clientModel.countObservers());
 		
 		ClientController clientController = new ClientController(clientView,clientModel);
 		clientView.startView(clientController);
 		
 	}
-	
+
 }
