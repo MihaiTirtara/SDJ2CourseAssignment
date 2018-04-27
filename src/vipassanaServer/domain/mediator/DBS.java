@@ -1,7 +1,5 @@
 package vipassanaServer.domain.mediator;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
