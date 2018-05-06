@@ -10,64 +10,47 @@ public class DBS implements DbsPersistance  {
 private MyDatabase dbs;
 	
 	public DBS()  {
-		try {
-			dbs = new MyDatabase("org.postgresql.Driver",
-					"jdbc:postgresql://localhost:5432/vipassanaMembers", "postgres", "hTrEa9982231");
-		} catch (ClassNotFoundException e) {
-			
-			e.getMessage();
-		}
+		
 	}
 	
 	public void addMember(String name, String lastName, boolean payment) throws SQLException {
-		String sql = "INSERT INTO public.members values (?, ?, ?)";
-			
-			dbs.update(sql, name, lastName, payment);
+		// quering the database
 			
 		
 	}
 
 	@Override
 	public ArrayList<Object[]> getMembers() {
-		String sql = "select name, lastname, payment, idno from members";
-		ArrayList<Object[]> array = null;
-		try {
-			array = dbs.query(sql);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
+		ArrayList<Object[]> array = new ArrayList<Object[]>();
+		Object[] e = {"Malaga","Piechota",true,3};
+		Object[] a = {"Jakub","White",false,4};
+		Object[] b = {"Priss","Brown",true,1};
+		Object[] c = {"Tom","Brwon",true,2};
+		Object[] d = {"Dan","Trees",false,5};
+		array.add(e);
+		array.add(a);
+		array.add(b);
+		array.add(c);
+		array.add(d);
 		return array;
 	}
 
 	@Override
 	public ArrayList<Object[]> getNotPaidMembers() {
-		String sql = "select name, lastname, payment, idno from members where (payment=?)";
-		ArrayList<Object[]> array = null;
-		try {
-			array = dbs.query(sql, false);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		ArrayList<Object[]> array = new ArrayList<Object[]>();
+		Object[] e = {"Malaga","Piechota",false,9};
+		Object[] a = {"Jakub","White",false,4};
+		Object[] b = {"Chris","Brown",false,7};
+		Object[] c = {"Eric","Brwon",false,8};
+		Object[] d = {"Dan","Trees",false,5};
+		array.add(e);
+		array.add(a);
+		array.add(b);
+		array.add(c);
+		array.add(d);
 		return array;
 	}
-	
-	public ArrayList<Object[]> getMembersNotPay() {
-		String sql = "select name, lastname, payment, idno from members when payment='false'";
-		ArrayList<Object[]> array = null;
-		try {
-			array = dbs.query(sql);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return array;
-	}
-	
-	
-
-	
 	
 		
 		

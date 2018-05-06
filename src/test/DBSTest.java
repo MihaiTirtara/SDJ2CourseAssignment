@@ -1,5 +1,6 @@
 package test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 import java.rmi.RemoteException;
@@ -15,37 +16,26 @@ import vipassanaServer.domain.mediator.ServerModelManager;
 class DBSTest {
 	
 	
-	@BeforeEach
-	void createDbs(){
-	}
 
+	
 //	@Test
-//	void testDbs() {
+//	void testClientModel() {
+//		ClientModelManager client = new ClientModelManager();
 //		try {
-//			dbs.addMember("Katarina", "Maholoc", true);
-//		} catch (SQLException e) {
-//			
-//			System.out.println(e.getMessage());
+//			client.addMember("Boris", "Sidllo", false);
+//		} catch (RemoteException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
 //		}
-//	}
-//	
-//	@Test
-//	void testServerModel() {
-//		
-//			serverModelManager.addMember("Blazeus", "Drawner", false);
-//		
 //		
 //	}
 	
 	@Test
-	void testClientModel() {
-		ClientModelManager client = new ClientModelManager();
-		try {
-			client.addMember("Boris", "Sidllo", false);
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	void testSingleton() {
+		ServerModelManager server = ServerModelManager.getInstance();
+		System.out.println(server);
+		ServerModelManager server1 = ServerModelManager.getInstance();
+		assertEquals(server+"", server1+"");
 		
 	}
 

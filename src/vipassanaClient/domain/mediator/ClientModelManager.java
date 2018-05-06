@@ -5,6 +5,7 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
 import java.util.Observable;
 
@@ -12,7 +13,7 @@ import utility.observer.RemoteSubject;
 import vipassanaServer.domain.mediator.ServerModel;
 import vipassanaServer.domain.mediator.ServerModelManager;
 
-public class ClientModelManager extends Observable implements ClientModel, Serializable {
+public class ClientModelManager extends Observable implements ClientModel {
 
 	private ServerModel server;
 	
@@ -21,7 +22,7 @@ public class ClientModelManager extends Observable implements ClientModel, Seria
 		
 		try {
 			server = (ServerModel) Naming.lookup("rmi://localhost:1099/vipassanaServer");
-
+			UnicastRemoteObject.exportObject(this, 0);
 			server.addObserver(this);
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
@@ -50,16 +51,12 @@ public class ClientModelManager extends Observable implements ClientModel, Seria
 	
 	
 	public synchronized void update(RemoteSubject<String> subject, String updateMsg) throws RemoteException {
-		System.out.println("Client model received the message "+updateMsg);
 		notifyView(updateMsg);
 		
 		
 	}
 	
 	public synchronized void notifyView(String updateMsg) {
-		System.out.println("BLAH");
-		System.out.println();
-		
 		super.setChanged();
 		super.notifyObservers(updateMsg);
 	}

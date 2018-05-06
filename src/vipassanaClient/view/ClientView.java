@@ -29,7 +29,8 @@ public class ClientView implements IClientView {
 		boolean continueWorking = true;
 		while (continueWorking) {
 			// Read input from user input.
-			System.out.print("1) Type 1 to add new member \n 2) Type 2 to get all members \n" +" Type 0 to exit\n Enter choice: ");
+			System.out.print("1) Type 1 to add new member \n 2) Type 2 to get all members \n 3) Type 3 to get all members who not paid 4)"
+					+ " Type 0 to exit\n Enter choice: ");
 			int choice = input.nextInt();
 			input.nextLine();
 
@@ -56,7 +57,6 @@ public class ClientView implements IClientView {
 
 	
 	public void update(Observable o, Object arg) {
-		System.out.println("BLAH");
 		String message = (String) arg;
 		show(message);
 		
